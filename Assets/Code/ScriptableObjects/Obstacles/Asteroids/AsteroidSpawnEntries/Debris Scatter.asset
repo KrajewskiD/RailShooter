@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f73d29b971f4197b83d096341b816f, type: 3}
+  m_Name: Debris Scatter
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8885569454958117511, guid: 4bb8e682473b64381a6f95e8186a3890, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: 4d793771c4ad34927aa632e6788479cf, type: 2}
+  countPerSegment: 30
+  conditionType: 0
+  condition:
+    rid: -2
+  placementType: 4
+  placement:
+    rid: 5829447979102634099
+  containerName: DebrisScatter
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5829447979102634099
+      type: {class: AvoidCenterPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        safeInnerFactor: 0.3
+        wallSafetyMargin: 0.1

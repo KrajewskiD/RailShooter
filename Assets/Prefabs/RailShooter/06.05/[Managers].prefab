@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5663920169614846711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4725446360097981103}
+  - component: {fileID: 1044862383336770680}
+  - component: {fileID: 6720317236095317270}
+  - component: {fileID: 3255354618777032982}
+  - component: {fileID: 8197254175923861974}
+  m_Layer: 0
+  m_Name: '[Managers]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4725446360097981103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663920169614846711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044862383336770680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663920169614846711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a280abdc57b45a3a8b65d9cc18c6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressionManager
+  baseXPToLevelUp: 100
+  xpGrowthMultiplier: 1.28
+  flatXPIncreasePerLevel: 20
+  maxXPToLevelUp: 0
+  currentXP: 0
+  xpToLevelUp: 100
+  currentLevel: 1
+--- !u!114 &6720317236095317270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663920169614846711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6619e13453d8447de9dbc07581493f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
+  allUpgradeTemplates:
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60101, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60102, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60103, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60104, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60105, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60106, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60107, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60108, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f60109, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f6010a, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f6010b, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f6010c, type: 2}
+  - {fileID: 11400000, guid: a10b0c0d0e0f4011a1b2c3d4e5f6010d, type: 2}
+  levelConfigs:
+  - interval: 1
+    upgradeOptionsCount: 3
+    rarityWeights:
+    - rarity: 0
+      weight: 70
+    - rarity: 1
+      weight: 30
+  - interval: 3
+    upgradeOptionsCount: 3
+    rarityWeights:
+    - rarity: 0
+      weight: 50
+    - rarity: 1
+      weight: 35
+    - rarity: 2
+      weight: 15
+  - interval: 5
+    upgradeOptionsCount: 3
+    rarityWeights:
+    - rarity: 0
+      weight: 35
+    - rarity: 1
+      weight: 35
+    - rarity: 2
+      weight: 25
+    - rarity: 3
+      weight: 5
+  - interval: 10
+    upgradeOptionsCount: 3
+    rarityWeights:
+    - rarity: 1
+      weight: 35
+    - rarity: 2
+      weight: 40
+    - rarity: 3
+      weight: 20
+    - rarity: 4
+      weight: 5
+  upgradePanel: {fileID: 0}
+  buttonsContainer: {fileID: 0}
+  buttonPrefab: {fileID: 8176251360229818099, guid: 0b9cc48530bee458c8b855f4b091bb4d, type: 3}
+  playerStats: {fileID: 0}
+  rerollsLeft: 3
+--- !u!114 &3255354618777032982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663920169614846711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f4d5d29077f46eba2720683436c0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
+  allWeaponPool:
+  - {fileID: 11400000, guid: 475c8aab0bc444768a4a5c0f11a1a983, type: 2}
+  - {fileID: 11400000, guid: da094c01e8ce74b11b2f0787b7de9ecd, type: 2}
+  - {fileID: 11400000, guid: 001dd2b6018d54dceb9a93fbd08a079e, type: 2}
+  - {fileID: 11400000, guid: d541ad173e57a49edaf7d9233d369cfc, type: 2}
+  startConfig:
+    interval: 1
+    upgradeOptionsCount: 3
+    rarityWeights:
+    - rarity: 0
+      weight: 1
+  cardContainer: {fileID: 0}
+  weaponCardPrefab: {fileID: 7284813323377139948, guid: 373c4580280214eba8b448ed672279ca, type: 3}
+  selectionPanel: {fileID: 0}
+  playerStats: {fileID: 0}
+--- !u!114 &8197254175923861974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663920169614846711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fe0b8f74ef94f2dbb3ceb574b5c827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InGameUIManager
+  menuPanel: {fileID: 0}
+  hudPanel: {fileID: 0}
+  upgradePanel: {fileID: 0}
+  projectilesSelectionPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}

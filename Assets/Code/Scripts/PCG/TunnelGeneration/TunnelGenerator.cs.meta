@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 08b28245e7ed042aea9aa47743f7e4ca
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - tunnelMaterial: {fileID: 2100000, guid: 7e3845650a4874da7bc940e34985fdfc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

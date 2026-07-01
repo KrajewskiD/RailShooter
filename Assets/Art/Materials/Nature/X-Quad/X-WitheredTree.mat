@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3434959346028174314
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: X-WitheredTree
+  m_Shader: {fileID: -6465566751694194690, guid: 76f204760c932452d91939b4119de1ae, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _LeavesFrontTexture:
+        m_Texture: {fileID: 2800000, guid: 9710fd6fdd80147bd91efb3764daf6b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeavesSideTexture:
+        m_Texture: {fileID: 2800000, guid: ec44b353b0329463081eb3f293702e33, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TrunkFrontTexture_1:
+        m_Texture: {fileID: 2800000, guid: 0d97dd8d33d1d4fd3b5fafd753dfa979, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TrunkSideTexture:
+        m_Texture: {fileID: 2800000, guid: 342af60ed762c467fb0465ab8a0da13f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _EdgeMax: 0.55
+    - _EdgeMin: 0.45
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - _BiomeColor: {r: 0.30553427, g: 0.8773585, b: 0.23589346, a: 1}
+    - _HighLightTint: {r: 0.7264151, g: 0.6393524, b: 0.2706924, a: 1}
+    - _OffsetLeaves: {r: 0.05, g: 0, b: 0, a: 0}
+    - _OffsetTrunk: {r: 0.14, g: 0.07, b: 0, a: 0}
+    - _ShadowTint: {r: 0.3315136, g: 0.8490566, b: 0.1882342, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ae75d41a9684067b258082f07e5f50, type: 3}
+  m_Name: Raven TX-1
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneData
+  displayName: Raven TX-1
+  rarity: 0
+  thumbnail: {fileID: 21300000, guid: ddd5858b5316d4da1a0fa98ce0bd78d2, type: 3}
+  visualPrefab: {fileID: 449202883474188049, guid: ada430e8e94b44ee8bb1d003c43cd1f8, type: 3}
+  description: Originally built as a civilian stunt plane for rural airshows, the
+    Raven TX-1 was hastily retrofitted with scrap-metal armor and twin machine guns
+    when the conflict first broke out. It completely lacks advanced targeting systems,
+    energy shields, or jet propulsion, relying instead on a loud, old-school combustion
+    engine. While it may not win any speed records, its purely mechanical design
+    makes it incredibly reliable, dirt-cheap to repair, and highly maneuverable at
+    low speeds. It is the ultimate, forgiving workhorse for a rookie pilot taking
+    their first flight into hostile territory.
+  unlockRequirement: Available from the start.
+  unlockedByDefault: 1
+  unlockCondition: 0
+  requiredKills: 0
+  requiredDistanceMeters: 0
+  requiredLevel: 1
+  maxHealth: 80
+  maxEnergy: 100
+  maxShield: 0
+  energyConsuption: 15
+  energyRegen: 0
+  maxPrimaryFirePointLevel: 3
+  maxSpecialFirePointLevel: 1
+  defaultFire: {fileID: 11400000, guid: c84e54f33ef54476888cc846af7c0bb5, type: 2}
+  defaultSpecialFire: {fileID: 11400000, guid: 794fea1b6f73542d598e69bea6fac94d, type: 2}

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cc28570c3994c77983aa49f5bf03bc, type: 3}
+  m_Name: NewSplineSpawnEntry
+  m_EditorClassIdentifier: Assembly-CSharp::SplineSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8880128812674323416, guid: c9ae0336c08b644038c2420e2237e432, type: 3}
+    scale: {x: 20, y: 20, z: 20}
+    settings: {fileID: 11400000, guid: c45e98f69b15a47b48a8928cbb8984c1, type: 2}
+  countPerSegment: 1
+  conditionType: 2
+  condition:
+    rid: 5829448198259474663
+  placementType: 1
+  placement:
+    rid: 5829448198259474664
+  containerName: Spawned
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829448198259474663
+      type: {class: SplineEveryNthSegmentCondition, ns: , asm: Assembly-CSharp}
+      data:
+        interval: 5
+        offset: 0
+    - rid: 5829448198259474664
+      type: {class: SplineCenterAxisPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        respectPlayerReach: 1
+        arcNormalized: 0.5

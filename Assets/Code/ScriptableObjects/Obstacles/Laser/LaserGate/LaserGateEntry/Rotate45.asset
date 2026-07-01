@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f73d29b971f4197b83d096341b816f, type: 3}
+  m_Name: Rotate45
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 6399027556216266556, guid: 90a18659a10784377ad677766ee4b8f0, type: 3}
+    scale: {x: 30, y: 30, z: 30}
+    settings: {fileID: 11400000, guid: 794be0cc4bdb447faaf0d662adce07ee, type: 2}
+  - prefab: {fileID: 6399027556216266556, guid: 90a18659a10784377ad677766ee4b8f0, type: 3}
+    scale: {x: 30, y: 30, z: 30}
+    settings: {fileID: 11400000, guid: 0f0ed0e4a8cdc4602877f18cfb25bf2e, type: 2}
+  countPerSegment: 1
+  conditionType: 1
+  condition:
+    rid: 5829447997820764248
+  placementType: 1
+  placement:
+    rid: 5829447997820764249
+  containerName: Spawned
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829447997820764248
+      type: {class: ChanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        probability: 0.1
+    - rid: 5829447997820764249
+      type: {class: CenterAxisPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        zNormalized: 0.5

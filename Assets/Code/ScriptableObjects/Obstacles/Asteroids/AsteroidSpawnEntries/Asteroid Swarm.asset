@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f73d29b971f4197b83d096341b816f, type: 3}
+  m_Name: Asteroid Swarm
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8885569454958117511, guid: 4bb8e682473b64381a6f95e8186a3890, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: ac436ee46af1d42078b95d96f493193c, type: 2}
+  - prefab: {fileID: 8885569454958117511, guid: 4bb8e682473b64381a6f95e8186a3890, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: e0477759777724d179ee562ee98a3759, type: 2}
+  countPerSegment: 1
+  conditionType: 2
+  condition:
+    rid: 5829447979102634102
+  placementType: 6
+  placement:
+    rid: 5829447979102634103
+  containerName: AsteroidSwarm
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829447979102634102
+      type: {class: EveryNthSegmentCondition, ns: , asm: Assembly-CSharp}
+      data:
+        interval: 12
+        offset: 1
+    - rid: 5829447979102634103
+      type: {class: ClusterPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        scatterFactor: 0.3

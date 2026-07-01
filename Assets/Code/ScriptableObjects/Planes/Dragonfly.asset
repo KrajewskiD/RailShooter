@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ae75d41a9684067b258082f07e5f50, type: 3}
+  m_Name: Dragonfly
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneData
+  displayName: Dragonfly
+  rarity: 4
+  thumbnail: {fileID: 21300000, guid: f3483324b3e9842ee8d94df3e547fd18, type: 3}
+  visualPrefab: {fileID: 1227389021898019197, guid: bb5ef7134445c48ac99b41cfcb188694, type: 3}
+  description: "Scavenged from the remnants of an old reconnaissance fleet, this
+    feather-light ship was stripped of all non-essential weight. It relies entirely
+    on the pilot\u2019s raw reflexes to weave through the most dangerous, procedurally
+    shifting corridors without suffering a single scratch."
+  unlockRequirement: Available from the start.
+  unlockedByDefault: 0
+  unlockCondition: 4
+  requiredKills: 0
+  requiredDistanceMeters: 0
+  requiredLevel: 30
+  maxHealth: 40
+  maxEnergy: 300
+  maxShield: 100
+  energyConsuption: 5
+  energyRegen: 15
+  maxPrimaryFirePointLevel: 5
+  maxSpecialFirePointLevel: 3
+  defaultFire: {fileID: 11400000, guid: a01191675c0f8460aae664a2ceb13314, type: 2}
+  defaultSpecialFire: {fileID: 11400000, guid: 05c0e15a4b1be469e8fdfd587622bb24, type: 2}

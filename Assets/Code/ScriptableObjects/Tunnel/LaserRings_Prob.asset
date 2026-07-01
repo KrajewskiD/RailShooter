@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f73d29b971f4197b83d096341b816f, type: 3}
+  m_Name: LaserRings_Prob
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8880128812674323416, guid: c9ae0336c08b644038c2420e2237e432, type: 3}
+    scale: {x: 40, y: 40, z: 40}
+    settings: {fileID: 11400000, guid: 4a53582ea2a4b4c72b82bcd41e325e76, type: 2}
+  - prefab: {fileID: 8880128812674323416, guid: c9ae0336c08b644038c2420e2237e432, type: 3}
+    scale: {x: 40, y: 40, z: 40}
+    settings: {fileID: 11400000, guid: c45e98f69b15a47b48a8928cbb8984c1, type: 2}
+  - prefab: {fileID: 8880128812674323416, guid: c9ae0336c08b644038c2420e2237e432, type: 3}
+    scale: {x: 40, y: 40, z: 40}
+    settings: {fileID: 11400000, guid: 15be2b8a999054c239f8484cb12bfa0e, type: 2}
+  countPerSegment: 1
+  conditionType: 1
+  condition:
+    rid: 5829447997820764256
+  placementType: 1
+  placement:
+    rid: 5829447951638593698
+  containerName: Spawned
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829447951638593698
+      type: {class: CenterAxisPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        zNormalized: 0.5
+    - rid: 5829447997820764256
+      type: {class: ChanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        probability: 0.4

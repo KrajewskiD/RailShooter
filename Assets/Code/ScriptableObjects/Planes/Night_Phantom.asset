@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ae75d41a9684067b258082f07e5f50, type: 3}
+  m_Name: Night_Phantom
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneData
+  displayName: Night Phantom
+  rarity: 3
+  thumbnail: {fileID: 21300000, guid: 47aeba887112f4564bf3d8ca529e9bef, type: 3}
+  visualPrefab: {fileID: 5347403105025670769, guid: 74a0aa1435e8f48e58222604afd35ee0, type: 3}
+  description: A ghost in the machine. Built in a highly classified black-site, this
+    stealth craft went missing during its maiden voyage. Today, it slips through
+    heavily fortified trenches and infinite enemy lines, remaining completely undetected
+    until it's already too late.
+  unlockRequirement: Kill 30 enemies in one run.
+  unlockedByDefault: 0
+  unlockCondition: 2
+  requiredKills: 30
+  requiredDistanceMeters: 0
+  requiredLevel: 1
+  maxHealth: 60
+  maxEnergy: 200
+  maxShield: 150
+  energyConsuption: 15
+  energyRegen: 5
+  maxPrimaryFirePointLevel: 5
+  maxSpecialFirePointLevel: 1
+  defaultFire: {fileID: 11400000, guid: 156bf632430d14a4397e412cb39c1176, type: 2}
+  defaultSpecialFire: {fileID: 11400000, guid: 3eb6051004053431887a2da6b6c1ee36, type: 2}

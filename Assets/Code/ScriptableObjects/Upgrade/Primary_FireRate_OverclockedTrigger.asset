@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4e022141930402a8e76fe90cbf7d7d, type: 3}
+  m_Name: Primary_FireRate_OverclockedTrigger
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
+  upgradeName: Overclocked Trigger
+  description: Increase primary weapon fire rate.
+  icon: {fileID: 21300000, guid: ffbe3e71127e94a8481b6e063856daed, type: 3}
+  category: 1
+  hullStatType: 0
+  weaponStatType: 1
+  modType: 1
+  baseValue: 0.06
+  allowedRarities: 0000000001000000020000000300000004000000

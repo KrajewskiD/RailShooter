@@ -1,0 +1,94 @@
+# Unity 6 – RailShooter
+# Bazuje na: https://github.com/github/gitignore/blob/main/Unity.gitignore
+
+# --- Unity (generowane lokalnie, nie commituj) ---
+.utmp/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.log
+
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Uu]IElementsSchema/
+
+# Pliki IDE / solution generowane przez Unity
+.vs/
+.gradle/
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Rider
+/[Aa]ssets/Plugins/Editor/JetBrains*
+*.DotSettings.user
+
+# Crash / diagnostyka
+sysinfo.txt
+mono_crash.*
+crashlytics-build.properties
+
+# Buildy i paczki
+*.apk
+*.aab
+*.unitypackage
+*.unitypackage.meta
+*.app
+
+# Blender backup
+*.blend1
+*.blend1.meta
+
+# TestRunner / sceny testowe
+InitTestScene*.unity*
+/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Addressables (jeśli kiedyś użyjesz)
+/ServerData
+/[Aa]ssets/StreamingAssets/aa*
+/[Aa]ssets/AddressableAssetsData/link.xml*
+/[Aa]ssets/Addressables_Temp*
+/[Aa]ssets/AddressableAssetsData/*/*.bin*
+
+# Visual Scripting (auto-generowane)
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+
+/[Aa]ssets/[Ss]ceneDependencyCache*
+
+# --- RailShooter – artefakty lokalne ---
+/outputs/
+/ProfilerCaptures/
+
+# --- System operacyjny ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# --- Opcjonalnie: odkomentuj jeśli nie chcesz współdzielić ustawień VS Code ---
+# .vscode/

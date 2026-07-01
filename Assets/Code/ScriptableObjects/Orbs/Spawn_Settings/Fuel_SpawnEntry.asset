@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cc28570c3994c77983aa49f5bf03bc, type: 3}
+  m_Name: Fuel_SpawnEntry
+  m_EditorClassIdentifier: Assembly-CSharp::SplineSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8933917835360258346, guid: 135d6b4fedb544773a8bbb8269f5adb4, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: bb677c2b21b2540bba6d9e3349f0c695, type: 2}
+  countPerSegment: 2
+  conditionType: 2
+  condition:
+    rid: 5829448198259474633
+  placementType: 2
+  placement:
+    rid: 5829448198259474634
+  containerName: Fuel_Orbs
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829448198259474633
+      type: {class: SplineEveryNthSegmentCondition, ns: , asm: Assembly-CSharp}
+      data:
+        interval: 2
+        offset: 0
+    - rid: 5829448198259474634
+      type: {class: SplineLateralOffsetPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        respectPlayerReach: 1
+        arcNormalized: 0.5
+        lateralOffset: 0
+        verticalOffset: 0
+        randomize: 1
+        randomLateralRange: 8
+        randomVerticalRange: 2

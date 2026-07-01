@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cc28570c3994c77983aa49f5bf03bc, type: 3}
+  m_Name: CH_Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::SplineSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 6877898539129857670, guid: 6e7dbef740bf14cb2ad0e7e8ddeb4ddd, type: 3}
+    scale: {x: 0, y: 0, z: 0}
+    settings: {fileID: 0}
+  countPerSegment: 1
+  conditionType: 4
+  condition:
+    rid: 5829448540085026886
+  placementType: 1
+  placement:
+    rid: 5829448540085026887
+  containerName: Enemy
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829448540085026886
+      type: {class: SplineSpecificSegmentIndexCondition, ns: , asm: Assembly-CSharp}
+      data:
+        targetIndex: 10
+    - rid: 5829448540085026887
+      type: {class: SplineCenterAxisPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        respectPlayerReach: 1
+        arcNormalized: 0.5

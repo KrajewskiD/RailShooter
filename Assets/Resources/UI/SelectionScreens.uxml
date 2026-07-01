@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/UI/PauseMenu.uss" />
+    <Style src="project://database/Assets/Resources/UI/SelectionScreens.uss" />
+
+    <ui:VisualElement name="selection-root" class="sel-root" picking-mode="Position">
+        <ui:VisualElement class="sel-topbar">
+            <ui:VisualElement class="brand">
+                <ui:VisualElement class="brand__icon" />
+                <ui:VisualElement class="brand__text">
+                    <ui:Label text="SKYBOUND" class="brand__title" />
+                    <ui:Label text="COMBAT SYSTEMS" class="brand__subtitle" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="sel-content">
+            <ui:VisualElement class="sel-shell">
+                <ui:VisualElement class="menu__corner menu__corner--tl" />
+                <ui:VisualElement class="menu__corner menu__corner--tr" />
+                <ui:VisualElement class="menu__corner menu__corner--bl" />
+                <ui:VisualElement class="menu__corner menu__corner--br" />
+
+                <ui:VisualElement class="sel-header">
+                    <ui:VisualElement class="menu__tag">
+                        <ui:VisualElement class="menu__tag-dash" />
+                        <ui:Label name="selection-tag" text="UPGRADE" class="menu__tag-text" />
+                    </ui:VisualElement>
+                    <ui:Label name="selection-title" text="UPGRADE SELECT" class="sel-title" />
+                    <ui:Label name="selection-subtitle" text="CHOOSE ONE OPTION" class="sel-subtitle" />
+                </ui:VisualElement>
+
+                <ui:ScrollView name="selection-scroll" class="sel-scroll" mode="Vertical">
+                    <ui:VisualElement name="selection-cards" class="sel-grid" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

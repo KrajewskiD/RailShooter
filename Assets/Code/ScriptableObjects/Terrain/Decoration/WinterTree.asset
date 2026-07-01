@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9d066d376d04a028a2192183405d6b, type: 3}
+  m_Name: WinterTree
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainDecorationData
+  renderMode: 1
+  gpuLODs:
+  - mesh: {fileID: 5635891161426710620, guid: 7c711eb15102d47cca825e159d9132fd, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 150
+  - mesh: {fileID: -3805404841337951257, guid: 7c711eb15102d47cca825e159d9132fd, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 350
+  - mesh: {fileID: 870185697503200309, guid: 7c711eb15102d47cca825e159d9132fd, type: 3}
+    materials:
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    maxDistance: 1600
+  - mesh: {fileID: -1822149588455053826, guid: 7c711eb15102d47cca825e159d9132fd, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 2000
+  - mesh: {fileID: -7029066030397927855, guid: 7226235c6641e48bf8c4074f5860a770, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 6aaa9dec4f3a547c5bd6bf47f82ba98a, type: 2}
+    maxDistance: 3000
+  densityPer100m2: 0.8
+  spawnStrategy: 2
+  clusterScale: 40
+  clusterThreshold: 0.45
+  minHeight: 180
+  maxHeight: 360
+  minSlope: 0.05
+  maxSlope: 0.45
+  filterMode: 0
+  minTemperature: 0
+  maxTemperature: 0.35
+  minMoisture: 0.4
+  maxMoisture: 1
+  biomeZone: 4
+  scaleMin: 1.8
+  scaleMax: 2.8
+  randomYRotation: 1
+  alignToTerrainNormal: 0
+  maxLODIndex: 4
+  applyBiomeTint: 1
+  tintShaderProperties:
+  - _BaseTint
+  - BiomeColor
+  tintPalette: []
+  biomeMix: 1.8
+  tintStrength: 2.8

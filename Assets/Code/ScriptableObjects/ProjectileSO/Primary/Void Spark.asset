@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e79a10fdd5a547bb9efc4c246b08f4e, type: 3}
+  m_Name: Void Spark
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  allowButtonHold: 1
+  isSpecialWeapon: 0
+  isLimitedAmmo: 0
+  firePattern: 1
+  bulletsPerTap: 1
+  fireRate: 8
+  magazineSize: 30
+  reloadTime: 2
+  ammoCostPerShot: 1
+  damage: 24
+  muzzleVelocity: 240
+  weaponIcon: {fileID: 21300000, guid: f9131523c22364078a2ca9f47b2929c5, type: 3}
+  visualModel: {fileID: 181884158646675425, guid: fa867c77a149e46fb88492ed0acee00c, type: 3}
+  hitEffect: {fileID: 3232971719450824266, guid: bb36871a4c9743cc9e7769789eb8dd2a, type: 3}
+  rarity: 2
+  maxDistance: 230

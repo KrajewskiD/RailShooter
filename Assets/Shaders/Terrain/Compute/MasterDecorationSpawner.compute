@@ -1,0 +1,515 @@
+#pragma kernel CSMain
+#pragma kernel CSUpdateLOD
+#pragma kernel CSBuildArguments
+#pragma kernel CSClearLODCounters
+#pragma kernel CSClearSlot
+
+struct MasterDecorationSpawnResult
+{
+    int indexID;
+    int localID;
+    float3 position;
+    float4 rotation;
+    float scale;
+    float temperature;
+    float moisture;
+};
+
+struct DecorationFilterData
+{
+    int indexID;
+    int renderMode;
+    float densityPer100m2;
+    float minHeight;
+    float maxHeight;
+    float minSlope;
+    float maxSlope;
+    float minTemperature;
+    float maxTemperature;
+    float minMoisture;
+    float maxMoisture;
+    float scaleMin;
+    float scaleMax;
+    int randomYRotation;
+    int alignToTerrainNormal;
+    float lod0MaxDist;
+    float lod1MaxDist;
+    float lod2MaxDist;
+    float lod3MaxDist;
+    float lod4MaxDist;
+};
+
+struct IndirectArgs
+{
+    uint indexCountPerInstance;
+    uint instanceCount;
+    uint startIndex;
+    uint baseVertexIndex;
+    uint startInstance;
+};
+
+struct SlotMeta
+{
+    float3 boundsCenter;
+    float pad0;
+    float3 boundsExtents;
+    float pad1;
+};
+
+
+uint _InstancesPerSlot;
+uint _MaxDecoTypes;
+
+
+
+uint _LOD0_Stride;
+uint _LOD1_Stride;
+uint _LOD2_Stride;
+uint _LOD3_Stride;
+uint _LOD4_Stride;
+
+
+StructuredBuffer<DecorationFilterData> _Filters;
+RWStructuredBuffer<MasterDecorationSpawnResult> _MasterBuffer;
+RWStructuredBuffer<uint> _SlotMasterCounters;
+Texture2D<float4> _ChunkData;
+SamplerState sampler_LinearClamp;
+
+uint _TargetSlotID;
+int _CurrentGlobalDecoID;
+int _BorderedVCount;
+float _Resolution;
+float _StartX;
+float _StartZ;
+float _ChunkSize;
+float _SlopeSampleRadius;
+uint _ChunkSeed;
+
+
+
+
+int _SpawnStrategy;
+float _ClusterScale;
+float _ClusterThreshold;
+
+
+StructuredBuffer<MasterDecorationSpawnResult> _MasterBufferRead;
+StructuredBuffer<uint> _ActiveSlots;
+StructuredBuffer<uint> _SlotMasterCountersRead;
+StructuredBuffer<SlotMeta> _SlotMetaBuffer;
+uint _ActiveSlotCount;
+
+RWStructuredBuffer<MasterDecorationSpawnResult> _LOD0_BufferRW;
+RWStructuredBuffer<MasterDecorationSpawnResult> _LOD1_BufferRW;
+RWStructuredBuffer<MasterDecorationSpawnResult> _LOD2_BufferRW;
+RWStructuredBuffer<MasterDecorationSpawnResult> _LOD3_BufferRW;
+RWStructuredBuffer<MasterDecorationSpawnResult> _LOD4_BufferRW;
+
+RWStructuredBuffer<uint> _LODCounters;
+float3 _GlobalCameraPosition;
+
+
+float _LODFadeRange;
+float4 _FrustumPlanes[6];
+int _EnableFrustumCulling;
+
+
+uint _UpdateLODWorkOffset;
+
+
+RWStructuredBuffer<IndirectArgs> _ArgsBuffer;
+StructuredBuffer<uint> _CommandToDecoID;
+uint _CurrentLODIndex;
+uint _CommandCount;
+
+
+float4 QuaternionEulerY(float angle)
+{
+    float s, c;
+    sincos(angle * 0.5f, s, c);
+    return float4(0.0f, s, 0.0f, c);
+}
+
+float GetRandomFloat(inout uint seed)
+{
+    seed = seed * 1664525u + 1013904223u;
+    return float(seed & 0x00FFFFFFu) / float(0x01000000u);
+}
+
+float4 SampleGridData(float worldX, float worldZ)
+{
+    float localX = worldX - _StartX;
+    float localZ = worldZ - _StartZ;
+    float gridX = localX / _Resolution;
+    float gridZ = localZ / _Resolution;
+
+
+
+    float2 uv = float2(gridX + 1.5f, gridZ + 1.5f) / (float)_BorderedVCount;
+    return _ChunkData.SampleLevel(sampler_LinearClamp, uv, 0);
+}
+
+uint HashCoord2D(int2 p)
+{
+    uint h = ((uint)p.x * 73856093u) ^ ((uint)p.y * 19349663u);
+    h = (h ^ 61u) ^ (h >> 16u);
+    h = h + (h << 3u);
+    h = h ^ (h >> 4u);
+    h = h * 0x27d4eb2du;
+    h = h ^ (h >> 15u);
+    return h;
+}
+
+float HashCoord2DToFloat(int2 p)
+{
+    return (float)HashCoord2D(p) / 4294967296.0f;
+}
+
+
+
+float ClusterValueNoise2D(float2 p)
+{
+    int2 i = (int2)floor(p);
+    float2 f = frac(p);
+    float2 u = f * f * (3.0f - 2.0f * f);
+
+    float a = HashCoord2DToFloat(i);
+    float b = HashCoord2DToFloat(i + int2(1, 0));
+    float c = HashCoord2DToFloat(i + int2(0, 1));
+    float d = HashCoord2DToFloat(i + int2(1, 1));
+
+    return lerp(lerp(a, b, u.x), lerp(c, d, u.x), u.y);
+}
+
+
+
+float StrategyJitterFraction(int strategy)
+{
+    if (strategy == 0) return 0.0f;
+    if (strategy == 2) return 0.6f;
+    return 0.8f;
+}
+
+bool IsAABBInFrustum(float3 center, float3 extents)
+{
+    [unroll]
+    for (uint p = 0; p < 6; ++p)
+    {
+        float4 plane = _FrustumPlanes[p];
+        float dist = dot(plane.xyz, center) + plane.w;
+        float radius = dot(abs(plane.xyz), extents);
+        if (dist + radius < 0.0f) return false;
+    }
+    return true;
+}
+
+void WriteToLODBuffer(uint lodIndex, uint globalDecoID, MasterDecorationSpawnResult result)
+{
+    uint stride;
+    if (lodIndex == 0)      stride = _LOD0_Stride;
+    else if (lodIndex == 1) stride = _LOD1_Stride;
+    else if (lodIndex == 2) stride = _LOD2_Stride;
+    else if (lodIndex == 3) stride = _LOD3_Stride;
+    else                    stride = _LOD4_Stride;
+
+    uint counterIdx = lodIndex * _MaxDecoTypes + globalDecoID;
+    uint currentCount;
+    InterlockedAdd(_LODCounters[counterIdx], 1, currentCount);
+    if (currentCount >= stride) return;
+
+    uint writeIdx = globalDecoID * stride + currentCount;
+    if (lodIndex == 0)      _LOD0_BufferRW[writeIdx] = result;
+    else if (lodIndex == 1) _LOD1_BufferRW[writeIdx] = result;
+    else if (lodIndex == 2) _LOD2_BufferRW[writeIdx] = result;
+    else if (lodIndex == 3) _LOD3_BufferRW[writeIdx] = result;
+    else                    _LOD4_BufferRW[writeIdx] = result;
+}
+
+
+
+groupshared MasterDecorationSpawnResult s_GroupBuffer[128];
+groupshared uint s_GroupCount;
+groupshared uint s_SlotWriteOffset;
+
+[numthreads(128, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID, uint localIdx : SV_GroupIndex)
+{
+    if (localIdx == 0)
+    {
+        s_GroupCount = 0;
+        s_SlotWriteOffset = 0;
+    }
+    GroupMemoryBarrierWithGroupSync();
+
+    bool isValid = true;
+    DecorationFilterData deco = _Filters[_CurrentGlobalDecoID];
+
+
+
+    float cellSize = max(0.1f, deco.scaleMax * 2.0f);
+    int cellsPerAxis = max(1, (int)(_ChunkSize / cellSize));
+    int maxObjects = cellsPerAxis * cellsPerAxis;
+    if ((int)id.x >= maxObjects) isValid = false;
+
+    int gridX = 0;
+    int gridZ = 0;
+    uint rngSeed = 0;
+
+    float worldX = 0.0f, worldZ = 0.0f;
+    float height = 0.0f, temperature = 0.0f, moisture = 0.0f;
+
+    if (isValid)
+    {
+
+
+
+
+
+        uint shuffleSeed = (uint)id.x * 0x9E3779B1u
+                         ^ (uint)(_CurrentGlobalDecoID + 1u) * 0x85EBCA77u
+                         ^ _ChunkSeed * 0xC2B2AE3Du;
+        shuffleSeed ^= shuffleSeed >> 16;
+        shuffleSeed *= 0x7FEB352Du;
+        shuffleSeed ^= shuffleSeed >> 15;
+        uint shuffledIdx = shuffleSeed % (uint)maxObjects;
+
+        gridX = (int)(shuffledIdx % (uint)cellsPerAxis);
+        gridZ = (int)(shuffledIdx / (uint)cellsPerAxis);
+
+
+
+
+        rngSeed = _ChunkSeed
+                ^ (uint)(_CurrentGlobalDecoID * 81237u)
+                ^ (uint)id.x * 0x9E3779B1u;
+        if (rngSeed == 0u) rngSeed = 1u;
+
+
+
+        float jitterAmp = StrategyJitterFraction(_SpawnStrategy) * cellSize;
+        float jitterX = (GetRandomFloat(rngSeed) - 0.5f) * jitterAmp;
+        float jitterZ = (GetRandomFloat(rngSeed) - 0.5f) * jitterAmp;
+
+        float localX = (gridX * cellSize) + (cellSize * 0.5f) + jitterX;
+        float localZ = (gridZ * cellSize) + (cellSize * 0.5f) + jitterZ;
+        worldX = _StartX + localX;
+        worldZ = _StartZ + localZ;
+
+
+
+
+
+        float4 centerData = SampleGridData(worldX, worldZ);
+        height = centerData.r;
+        temperature = centerData.g;
+        moisture = centerData.b;
+
+        float tunnelMask = centerData.a; 
+        if (tunnelMask > 0.5f && deco.scaleMax > 2.0f) 
+        {
+            isValid = false;
+        }
+
+
+        float densityMul = 1.0f;
+        if (_SpawnStrategy == 2)
+        {
+
+
+            float2 np = float2(worldX, worldZ) / max(_ClusterScale, 1.0f);
+            float n = ClusterValueNoise2D(np);
+            float moistureForCluster = moisture >= 0.0f ? moisture : 1.0f;
+            float mask = moistureForCluster * lerp(0.5f, 1.0f, n);
+            densityMul = smoothstep(_ClusterThreshold, _ClusterThreshold + 0.15f, mask);
+        }
+
+        float spawnChance = (deco.densityPer100m2 / 100.0f) * (cellSize * cellSize) * densityMul;
+        if (GetRandomFloat(rngSeed) > spawnChance) isValid = false;
+
+        if (isValid)
+        {
+            if (height < deco.minHeight || height > deco.maxHeight) isValid = false;
+            if (temperature >= 0.0f && (temperature < deco.minTemperature || temperature > deco.maxTemperature)) isValid = false;
+            if (moisture >= 0.0f && (moisture < deco.minMoisture || moisture > deco.maxMoisture)) isValid = false;
+        }
+    }
+
+    float4 rot = float4(0, 0, 0, 1);
+    float scale = 1.0f;
+
+    if (isValid)
+    {
+        float r = _SlopeSampleRadius;
+        float hL = SampleGridData(worldX - r, worldZ).r;
+        float hR = SampleGridData(worldX + r, worldZ).r;
+        float hD = SampleGridData(worldX, worldZ - r).r;
+        float hU = SampleGridData(worldX, worldZ + r).r;
+
+        float3 normal = normalize(float3(hL - hR, 2.0f * r, hD - hU));
+        float slope = 1.0f - normal.y;
+        if (slope < deco.minSlope || slope > deco.maxSlope) isValid = false;
+
+        if (isValid)
+        {
+            if (deco.randomYRotation > 0)
+            {
+                float a = GetRandomFloat(rngSeed) * 6.2831853f;
+                rot = QuaternionEulerY(a);
+            }
+            if (deco.alignToTerrainNormal > 0)
+            {
+                float3 up = float3(0, 1, 0);
+                float d = dot(up, normal);
+                if (d < 0.99999f && d > -0.99999f)
+                {
+                    float3 axis = cross(up, normal);
+                    float4 alignRot = normalize(float4(axis.x, axis.y, axis.z, 1.0f + d));
+                    rot = float4(
+                        alignRot.w * rot.xyz + rot.w * alignRot.xyz + cross(alignRot.xyz, rot.xyz),
+                        alignRot.w * rot.w - dot(alignRot.xyz, rot.xyz)
+                    );
+                }
+            }
+            scale = lerp(deco.scaleMin, deco.scaleMax, GetRandomFloat(rngSeed));
+        }
+    }
+
+    MasterDecorationSpawnResult result = (MasterDecorationSpawnResult)0;
+    if (isValid)
+    {
+        result.indexID = deco.indexID;
+        result.localID = _CurrentGlobalDecoID;
+        result.position = float3(worldX, height, worldZ);
+        result.rotation = rot;
+        result.scale = scale;
+        result.temperature = temperature;
+        result.moisture = moisture;
+    }
+
+    uint localOffset = 0;
+    if (isValid)
+    {
+        InterlockedAdd(s_GroupCount, 1, localOffset);
+        s_GroupBuffer[localOffset] = result;
+    }
+    GroupMemoryBarrierWithGroupSync();
+
+    if (localIdx == 0 && s_GroupCount > 0)
+    {
+        InterlockedAdd(_SlotMasterCounters[_TargetSlotID], s_GroupCount, s_SlotWriteOffset);
+    }
+    GroupMemoryBarrierWithGroupSync();
+
+    if (localIdx < s_GroupCount)
+    {
+        uint writeLocal = s_SlotWriteOffset + localIdx;
+        if (writeLocal < _InstancesPerSlot)
+        {
+            uint writeGlobal = _TargetSlotID * _InstancesPerSlot + writeLocal;
+            _MasterBuffer[writeGlobal] = s_GroupBuffer[localIdx];
+        }
+    }
+}
+
+[numthreads(256, 1, 1)]
+void CSUpdateLOD(uint3 id : SV_DispatchThreadID)
+{
+    uint flatIdx = id.x + _UpdateLODWorkOffset;
+    uint activeSlotIdx = flatIdx / _InstancesPerSlot;
+    if (activeSlotIdx >= _ActiveSlotCount) return;
+
+    uint slotID = _ActiveSlots[activeSlotIdx];
+    uint localIdx = flatIdx % _InstancesPerSlot;
+    uint slotCount = _SlotMasterCountersRead[slotID];
+    if (localIdx >= slotCount) return;
+
+    if (_EnableFrustumCulling != 0)
+    {
+        SlotMeta meta = _SlotMetaBuffer[slotID];
+        if (!IsAABBInFrustum(meta.boundsCenter, meta.boundsExtents)) return;
+    }
+
+    uint globalReadIdx = slotID * _InstancesPerSlot + localIdx;
+    MasterDecorationSpawnResult result = _MasterBufferRead[globalReadIdx];
+
+    uint globalDecoID = (uint)result.localID;
+    if (globalDecoID >= _MaxDecoTypes) return;
+
+
+
+
+
+    DecorationFilterData df = _Filters[globalDecoID];
+
+    float dist = distance(result.position, _GlobalCameraPosition);
+
+
+    uint primaryLOD = 5;
+    float curMax = 0.0f;
+    float prevMax = 0.0f;
+    if (dist < df.lod0MaxDist)      { primaryLOD = 0; curMax = df.lod0MaxDist; prevMax = 0.0f; }
+    else if (dist < df.lod1MaxDist) { primaryLOD = 1; curMax = df.lod1MaxDist; prevMax = df.lod0MaxDist; }
+    else if (dist < df.lod2MaxDist) { primaryLOD = 2; curMax = df.lod2MaxDist; prevMax = df.lod1MaxDist; }
+    else if (dist < df.lod3MaxDist) { primaryLOD = 3; curMax = df.lod3MaxDist; prevMax = df.lod2MaxDist; }
+    else if (dist < df.lod4MaxDist) { primaryLOD = 4; curMax = df.lod4MaxDist; prevMax = df.lod3MaxDist; }
+    if (primaryLOD >= 5) return;
+
+
+    float lodSpan = max(curMax - prevMax, 0.001f);
+    float fadeSize = lodSpan * _LODFadeRange;
+    float fadeStart = curMax - fadeSize;
+
+    float primaryFade = 1.0f;
+    bool inCrossfade = (dist > fadeStart) && (primaryLOD < 4);
+    if (inCrossfade)
+    {
+        primaryFade = saturate((curMax - dist) / max(fadeSize, 0.001f));
+    }
+
+
+
+
+    uint hashX = asuint(result.position.x);
+    uint hashZ = asuint(result.position.z);
+    uint hashSeed = (hashX * 73856093u) ^ (hashZ * 19349663u);
+    hashSeed = (hashSeed ^ 61u) ^ (hashSeed >> 16u);
+    hashSeed = hashSeed + (hashSeed << 3u);
+    hashSeed = hashSeed ^ (hashSeed >> 4u);
+    hashSeed = hashSeed * 0x27d4eb2du;
+    hashSeed = hashSeed ^ (hashSeed >> 15u);
+    float treeRand = float(hashSeed) / 4294967296.0;
+
+    if (inCrossfade && treeRand >= primaryFade)
+    {
+        WriteToLODBuffer(primaryLOD + 1, globalDecoID, result);
+    }
+    else
+    {
+        WriteToLODBuffer(primaryLOD, globalDecoID, result);
+    }
+}
+
+[numthreads(64, 1, 1)]
+void CSBuildArguments(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _CommandCount) return;
+    uint decoID = _CommandToDecoID[id.x];
+    uint counterIdx = _CurrentLODIndex * _MaxDecoTypes + decoID;
+
+    IndirectArgs args = _ArgsBuffer[id.x];
+    args.instanceCount = _LODCounters[counterIdx];
+    _ArgsBuffer[id.x] = args;
+}
+
+[numthreads(64, 1, 1)]
+void CSClearLODCounters(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= 5 * _MaxDecoTypes) return;
+    _LODCounters[id.x] = 0;
+}
+
+[numthreads(1, 1, 1)]
+void CSClearSlot(uint3 id : SV_DispatchThreadID)
+{
+    _SlotMasterCounters[_TargetSlotID] = 0;
+}

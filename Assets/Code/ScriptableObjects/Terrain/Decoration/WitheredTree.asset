@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9d066d376d04a028a2192183405d6b, type: 3}
+  m_Name: WitheredTree
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainDecorationData
+  renderMode: 1
+  gpuLODs:
+  - mesh: {fileID: -1559022862580495743, guid: 3401699f6a26a474b8195d9453068699, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 150
+  - mesh: {fileID: -8597014283790301907, guid: 3401699f6a26a474b8195d9453068699, type: 3}
+    materials:
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    maxDistance: 450
+  - mesh: {fileID: 5328626290206323795, guid: 3401699f6a26a474b8195d9453068699, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 1600
+  - mesh: {fileID: 2483497424783796902, guid: 3401699f6a26a474b8195d9453068699, type: 3}
+    materials:
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    maxDistance: 2000
+  - mesh: {fileID: 0}
+    materials: []
+    maxDistance: 2000
+  densityPer100m2: 0.15
+  spawnStrategy: 1
+  clusterScale: 12
+  clusterThreshold: 0.45
+  minHeight: 20
+  maxHeight: 250
+  minSlope: 0
+  maxSlope: 0.15
+  filterMode: 0
+  minTemperature: 0.5
+  maxTemperature: 1
+  minMoisture: 0
+  maxMoisture: 0.55
+  biomeZone: 4
+  scaleMin: 2
+  scaleMax: 3.2
+  randomYRotation: 1
+  alignToTerrainNormal: 0
+  maxLODIndex: 4
+  applyBiomeTint: 1
+  tintShaderProperties:
+  - _BaseTint
+  - BiomeColor
+  tintPalette: []
+  biomeMix: 0.4
+  tintStrength: 1

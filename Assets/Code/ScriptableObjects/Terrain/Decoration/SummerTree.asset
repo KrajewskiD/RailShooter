@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9d066d376d04a028a2192183405d6b, type: 3}
+  m_Name: SummerTree
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainDecorationData
+  renderMode: 1
+  gpuLODs:
+  - mesh: {fileID: -5080806864237707354, guid: 6d0a31e58ea50498faacac4e1bee5f81, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 200
+  - mesh: {fileID: -7729185964412772987, guid: 6d0a31e58ea50498faacac4e1bee5f81, type: 3}
+    materials:
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    maxDistance: 450
+  - mesh: {fileID: -5568452412106377858, guid: 6d0a31e58ea50498faacac4e1bee5f81, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    maxDistance: 1600
+  - mesh: {fileID: -5287117183016665583, guid: 6d0a31e58ea50498faacac4e1bee5f81, type: 3}
+    materials:
+    - {fileID: 2100000, guid: b931112a15794431280c67b724c1e385, type: 2}
+    - {fileID: 2100000, guid: 326d2222b98694e0ca2e6c4ac1c6ab0a, type: 2}
+    maxDistance: 2000
+  - mesh: {fileID: 0}
+    materials: []
+    maxDistance: 2000
+  densityPer100m2: 1180
+  spawnStrategy: 1
+  clusterScale: 60
+  clusterThreshold: 0.52
+  minHeight: 45
+  maxHeight: 200
+  minSlope: 0
+  maxSlope: 0.25
+  filterMode: 0
+  minTemperature: 0.35
+  maxTemperature: 0.7
+  minMoisture: 0.45
+  maxMoisture: 1
+  biomeZone: 4
+  scaleMin: 2.5
+  scaleMax: 4
+  randomYRotation: 1
+  alignToTerrainNormal: 0
+  maxLODIndex: 4
+  applyBiomeTint: 1
+  tintShaderProperties:
+  - _BaseTint
+  - BiomeColor
+  tintPalette: []
+  biomeMix: 0.4
+  tintStrength: 1

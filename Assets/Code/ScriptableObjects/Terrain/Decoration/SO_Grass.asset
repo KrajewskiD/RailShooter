@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9d066d376d04a028a2192183405d6b, type: 3}
+  m_Name: SO_Grass
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainDecorationData
+  renderMode: 1
+  gpuLODs:
+  - mesh: {fileID: -3417052793237702330, guid: 981a4b463ce9946a78bba47aa7e2d073, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 32644b50e05d94eceb20021dc5d5961a, type: 2}
+    maxDistance: 500
+  - mesh: {fileID: -1659870630476579675, guid: 981a4b463ce9946a78bba47aa7e2d073, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 32644b50e05d94eceb20021dc5d5961a, type: 2}
+    maxDistance: 1000
+  - mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    materials:
+    - {fileID: 9200615963238450476, guid: 981a4b463ce9946a78bba47aa7e2d073, type: 3}
+    maxDistance: 1500
+  - mesh: {fileID: -1659870630476579675, guid: 981a4b463ce9946a78bba47aa7e2d073, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 32644b50e05d94eceb20021dc5d5961a, type: 2}
+    maxDistance: 2000
+  - mesh: {fileID: -1659870630476579675, guid: 981a4b463ce9946a78bba47aa7e2d073, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 32644b50e05d94eceb20021dc5d5961a, type: 2}
+    maxDistance: 2500
+  densityPer100m2: 800
+  spawnStrategy: 2
+  clusterScale: 20
+  clusterThreshold: 0.087
+  minHeight: 25
+  maxHeight: 180
+  minSlope: 0
+  maxSlope: 1
+  filterMode: 0
+  minTemperature: 0
+  maxTemperature: 1
+  minMoisture: 0
+  maxMoisture: 1
+  biomeZone: 4
+  scaleMin: 0.5
+  scaleMax: 1
+  randomYRotation: 1
+  alignToTerrainNormal: 0
+  maxLODIndex: 4
+  applyBiomeTint: 1
+  tintShaderProperties: []
+  tintPalette: []
+  biomeMix: 5
+  tintStrength: 50

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e79a10fdd5a547bb9efc4c246b08f4e, type: 3}
+  m_Name: Inferno Burst
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  allowButtonHold: 1
+  isSpecialWeapon: 0
+  isLimitedAmmo: 0
+  firePattern: 1
+  bulletsPerTap: 1
+  fireRate: 7
+  magazineSize: 36
+  reloadTime: 1.8
+  ammoCostPerShot: 1
+  damage: 20
+  muzzleVelocity: 180
+  weaponIcon: {fileID: 21300000, guid: 1a78cd58d1a434ba492e01a0f20e3a85, type: 3}
+  visualModel: {fileID: 181884158646675425, guid: 097ff0c6ce31c400b9d593efbfe4be0e, type: 3}
+  hitEffect: {fileID: 3232971719450824266, guid: 26e2d6b9820844d29a4b73cf734484dd, type: 3}
+  rarity: 0
+  maxDistance: 200

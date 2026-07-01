@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8644c4dc285cd4eda967a2659789e487, type: 3}
+  m_Name: Asteroid_Medium
+  m_EditorClassIdentifier: Assembly-CSharp::AsteroidSettings
+  noise:
+    noiseType: 0
+    fractalType: 1
+    cellularDistance: 1
+    cellularReturn: 1
+    seed: 1
+    frequency: 0.2
+    octaves: 4
+    lacunarity: 2
+    gain: 0.5
+    cellularJitter: 0.45
+  noiseStrength: 10
+  voxelSize: 6
+  isoLevel: 1
+  backend: 1
+  carveScale: 100
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  radius: 15
+  roughness: 30

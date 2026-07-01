@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/Resources/UI/InGameHUD.uss" />
+
+    <ui:VisualElement name="in-game-hud-root" class="hud-root" picking-mode="Ignore">
+        <ui:VisualElement class="hud-xp" picking-mode="Ignore">
+            <ui:Label name="xp-level-current" text="LVL 1" class="hud-xp__level" />
+            <ui:VisualElement class="hud-xp__track">
+                <ui:VisualElement name="xp-fill" class="hud-xp__fill" />
+            </ui:VisualElement>
+            <ui:Label name="xp-level-next" text="LVL 2" class="hud-xp__level hud-xp__level--next" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="hud-stats" picking-mode="Ignore">
+            <ui:VisualElement class="hud-row hud-row--health">
+                <ui:Label text="HEALTH" class="hud-row__label" />
+                <ui:VisualElement class="hud-bar hud-bar--health">
+                    <ui:VisualElement name="health-fill" class="hud-bar__fill hud-bar__fill--health" />
+                </ui:VisualElement>
+                <ui:Label name="health-value" text="0/0" class="hud-row__value" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="hud-row hud-row--shield">
+                <ui:Label text="SHIELD" class="hud-row__label" />
+                <ui:VisualElement class="hud-bar hud-bar--shield">
+                    <ui:VisualElement name="shield-fill" class="hud-bar__fill hud-bar__fill--shield" />
+                </ui:VisualElement>
+                <ui:Label name="shield-value" text="0/0" class="hud-row__value" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="hud-row hud-row--energy">
+                <ui:Label text="ENERGY" class="hud-row__label" />
+                <ui:VisualElement class="hud-bar hud-bar--energy">
+                    <ui:VisualElement name="energy-fill" class="hud-bar__fill hud-bar__fill--energy" />
+                </ui:VisualElement>
+                <ui:Label name="energy-value" text="0/0" class="hud-row__value" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="hud-row hud-row--ammo">
+                <ui:Label text="AMMO" class="hud-row__label" />
+                <ui:VisualElement name="ammo-segments" class="hud-segments hud-segments--ammo" />
+                <ui:Label name="ammo-value" text="0/0" class="hud-row__value" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="hud-row hud-row--special">
+                <ui:Label text="SPECIAL" class="hud-row__label" />
+                <ui:VisualElement name="special-segments" class="hud-segments hud-segments--special" />
+                <ui:Label name="special-value" text="0/0" class="hud-row__value" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

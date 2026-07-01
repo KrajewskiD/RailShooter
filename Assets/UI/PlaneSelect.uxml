@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/UI/PauseMenu.uss" />
+    <Style src="project://database/Assets/UI/PlaneSelect.uss" />
+
+    <ui:VisualElement name="plane-select-root" class="ps-root" picking-mode="Position" style="display: none;">
+
+        <ui:VisualElement class="ps-topbar">
+            <ui:VisualElement class="brand">
+                <ui:VisualElement class="brand__icon" />
+                <ui:VisualElement class="brand__text">
+                    <ui:Label text="SKYBOUND" class="brand__title" />
+                    <ui:Label text="HANGAR  ·  SLOT 02" class="brand__subtitle" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="ps-topbar__right">
+                <ui:VisualElement name="btn-back" class="ps-pill-btn" focusable="true">
+                    <ui:Label text="←" class="ps-pill-btn__icon" />
+                    <ui:Label text="BACK" class="ps-pill-btn__label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="ps-content">
+
+            <ui:VisualElement class="ps-hangar">
+                <ui:VisualElement class="ps-hangar__header">
+                    <ui:VisualElement class="menu__tag">
+                        <ui:VisualElement class="menu__tag-dash" />
+                        <ui:Label text="HANGAR" class="menu__tag-text" />
+                    </ui:VisualElement>
+                    <ui:Label name="hangar-count" text="0/0 UNLOCKED" class="ps-hangar__count" />
+                </ui:VisualElement>
+                <ui:VisualElement name="hangar-list" class="ps-hangar__list" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="ps-preview">
+                <ui:VisualElement class="ps-preview__header">
+                    <ui:VisualElement class="menu__tag">
+                        <ui:VisualElement class="menu__tag-dash" />
+                        <ui:Label text="AIRCRAFT" class="menu__tag-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ps-preview__title-row">
+                        <ui:Label name="preview-name" text="Plane Name" class="ps-preview__name" />
+                        <ui:Label name="preview-rarity" text="STANDARD" class="ps-rarity ps-rarity--standard" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="ps-preview__image-wrap">
+                    <ui:VisualElement name="preview-image" class="ps-preview__image">
+                        <ui:Image name="preview-render" class="ps-preview__render" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement name="preview-dots" class="ps-preview__dots" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="ps-specs">
+                <ui:VisualElement class="menu__corner menu__corner--tl" />
+                <ui:VisualElement class="menu__corner menu__corner--tr" />
+                <ui:VisualElement class="menu__corner menu__corner--bl" />
+                <ui:VisualElement class="menu__corner menu__corner--br" />
+
+                <ui:VisualElement class="ps-section">
+                    <ui:Label text="DESCRIPTION" class="ps-section__heading" />
+                    <ui:Label name="specs-description" text="—" class="ps-specs__description" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="ps-section">
+                    <ui:Label text="STATS" class="ps-section__heading" />
+                    <ui:VisualElement class="ps-stat" name="stat-health">
+                        <ui:VisualElement class="ps-stat__head">
+                            <ui:Label text="HEALTH" class="ps-stat__label" />
+                            <ui:Label name="stat-health-val" text="0" class="ps-stat__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-stat__bar">
+                            <ui:VisualElement name="stat-health-fill" class="ps-stat__fill ps-stat__fill--health" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ps-stat" name="stat-shield">
+                        <ui:VisualElement class="ps-stat__head">
+                            <ui:Label text="SHIELD" class="ps-stat__label" />
+                            <ui:Label name="stat-shield-val" text="0" class="ps-stat__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-stat__bar">
+                            <ui:VisualElement name="stat-shield-fill" class="ps-stat__fill ps-stat__fill--shield" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ps-stat" name="stat-energy">
+                        <ui:VisualElement class="ps-stat__head">
+                            <ui:Label text="ENERGY" class="ps-stat__label" />
+                            <ui:Label name="stat-energy-val" text="0" class="ps-stat__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-stat__bar">
+                            <ui:VisualElement name="stat-energy-fill" class="ps-stat__fill ps-stat__fill--energy" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ps-stat" name="stat-consumption">
+                        <ui:VisualElement class="ps-stat__head">
+                            <ui:Label text="ENERGY CONSUMPTION" class="ps-stat__label" />
+                            <ui:Label name="stat-consumption-val" text="0" class="ps-stat__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-stat__bar">
+                            <ui:VisualElement name="stat-consumption-fill" class="ps-stat__fill ps-stat__fill--consumption" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="ps-stat" name="stat-regen">
+                        <ui:VisualElement class="ps-stat__head">
+                            <ui:Label text="ENERGY REGENERATION" class="ps-stat__label" />
+                            <ui:Label name="stat-regen-val" text="0" class="ps-stat__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-stat__bar">
+                            <ui:VisualElement name="stat-regen-fill" class="ps-stat__fill ps-stat__fill--regen" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="ps-section">
+                    <ui:Label text="EQUIPMENT" class="ps-section__heading" />
+                    <ui:VisualElement class="ps-equip-row">
+                        <ui:VisualElement class="ps-equip">
+                            <ui:Label text="PRIMARY" class="ps-equip__label" />
+                            <ui:Label name="equip-primary" text="—" class="ps-equip__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-equip">
+                            <ui:Label text="SPECIAL" class="ps-equip__label" />
+                            <ui:Label name="equip-special" text="—" class="ps-equip__value" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ps-equip">
+                            <ui:Label text="FIRE POINTS" class="ps-equip__label" />
+                            <ui:Label name="equip-firepoints" text="—" class="ps-equip__value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement name="unlock-section" class="ps-section ps-unlock">
+                    <ui:Label text="UNLOCK REQUIREMENT" class="ps-section__heading" />
+                    <ui:Label name="unlock-requirement" text="—" class="ps-unlock__text" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="btn-confirm" class="ps-btn ps-btn--primary" focusable="true">
+                    <ui:Label name="btn-confirm-label" text="SELECT &amp; LAUNCH" class="ps-btn__label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

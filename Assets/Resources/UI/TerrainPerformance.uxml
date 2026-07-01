@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/Resources/UI/TerrainPerformance.uss" />
+
+    <ui:VisualElement name="terrain-performance-root" class="perf-root">
+        <ui:VisualElement class="perf-panel">
+            <ui:Label text="Terrain Performance" class="perf-title" />
+            <ui:Label name="config-label" text="Single chunk benchmark" class="perf-subtitle" />
+
+            <ui:Button name="start-button" text="Start" class="perf-start" />
+
+            <ui:VisualElement class="perf-status-row">
+                <ui:Label name="spinner-label" text="" class="perf-spinner" />
+                <ui:Label name="status-label" text="Ready" class="perf-status" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="perf-progress">
+                <ui:VisualElement name="progress-fill" class="perf-progress__fill" />
+            </ui:VisualElement>
+            <ui:Label name="progress-label" text="0%" class="perf-progress-label" />
+
+            <ui:Label name="math-result-label" text="Noise math: -" class="perf-result" />
+            <ui:Label name="chunk-result-label" text="Chunk generation: -" class="perf-result" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

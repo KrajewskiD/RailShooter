@@ -1,0 +1,290 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PauseMenu.uss?fileID=7433441132597879392&amp;guid=6f3869c7cadc64ea5a98ba6e9150f3e2&amp;type=3#PauseMenu"/>
+    <ui:VisualElement name="main-root" picking-mode="Position" class="pause-root mm-root">
+
+        <ui:VisualElement pickable="false" class="mm-bg">
+
+            <ui:VisualElement class="mm-sky mm-sky--top"/>
+            <ui:VisualElement class="mm-sky mm-sky--mid"/>
+            <ui:VisualElement class="mm-sky mm-sky--bottom"/>
+
+            <ui:VisualElement class="mm-sun-glow"/>
+            <ui:VisualElement class="mm-sun-glow-inner"/>
+            <ui:VisualElement class="mm-sun"/>
+
+            <ui:VisualElement class="mm-mountains mm-mountains--back">
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+                <ui:VisualElement class="mm-hump mm-hump--low"/>
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+                <ui:VisualElement class="mm-hump mm-hump--low"/>
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="mm-mountains mm-mountains--mid">
+                <ui:VisualElement class="mm-hump mm-hump--low"/>
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+                <ui:VisualElement class="mm-hump mm-hump--low"/>
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="mm-mountains mm-mountains--front">
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+                <ui:VisualElement class="mm-hump mm-hump--low"/>
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="mm-mountains mm-mountains--near">
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+                <ui:VisualElement class="mm-hump mm-hump--tall"/>
+                <ui:VisualElement class="mm-hump mm-hump--mid"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="mm-foreground">
+                <ui:VisualElement class="mm-pillar mm-pillar--short"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--tall"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--mid"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--short"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--mid"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--tall"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--short"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--mid"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--tall"/>
+                <ui:VisualElement class="mm-pillar mm-pillar--short"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="mm-screen-corner mm-screen-corner--tl"/>
+            <ui:VisualElement class="mm-screen-corner mm-screen-corner--tr"/>
+            <ui:VisualElement class="mm-screen-corner mm-screen-corner--bl"/>
+            <ui:VisualElement class="mm-screen-corner mm-screen-corner--br"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="middle-row">
+            <ui:VisualElement class="menu">
+                <ui:VisualElement class="menu__corner menu__corner--tl"/>
+                <ui:VisualElement class="menu__corner menu__corner--tr"/>
+                <ui:VisualElement class="menu__corner menu__corner--bl"/>
+                <ui:VisualElement class="menu__corner menu__corner--br"/>
+                <ui:VisualElement class="menu__header">
+                    <ui:VisualElement class="menu__tag">
+                        <ui:VisualElement class="menu__tag-dash"/>
+                        <ui:Label text="MAIN MENU" class="menu__tag-text"/>
+                    </ui:VisualElement>
+                    <ui:Label text="Take flight." class="menu__title mm-title"/>
+                    <ui:VisualElement class="menu__divider"/>
+                    <ui:Label text="CHOOSE HOW TO BEGIN." class="menu__subtitle"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="menu-list" class="menu__list">
+                    <ui:VisualElement name="item-continue" focusable="true" class="menu-item is-selected">
+                        <ui:VisualElement class="menu-item__accent"/>
+                        <ui:VisualElement class="menu-item__body">
+                            <ui:Label text="Continue" class="menu-item__title"/>
+                            <ui:Label text="LAST SESSION " class="menu-item__subtitle"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="menu-item__trailing">
+                            <ui:Label text="›" class="menu-item__arrow"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="item-play" focusable="true" class="menu-item">
+                        <ui:VisualElement class="menu-item__accent"/>
+                        <ui:VisualElement class="menu-item__body">
+                            <ui:Label text="New Game" class="menu-item__title"/>
+                            <ui:Label text="START A FRESH RUN" class="menu-item__subtitle"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="menu-item__trailing">
+                            <ui:Label text="›" class="menu-item__arrow"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="item-statistics" focusable="true" class="menu-item">
+                        <ui:VisualElement class="menu-item__accent"/>
+                        <ui:VisualElement class="menu-item__body">
+                            <ui:Label text="Statistics" class="menu-item__title"/>
+                            <ui:Label text="PILOT RECORD" class="menu-item__subtitle"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="menu-item__trailing">
+                            <ui:Label text="›" class="menu-item__arrow"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="item-options" focusable="true" class="menu-item">
+                        <ui:VisualElement class="menu-item__accent"/>
+                        <ui:VisualElement class="menu-item__body">
+                            <ui:Label text="Options" class="menu-item__title"/>
+                            <ui:Label text="AUDIO  ·  VIDEO  ·  CONTROLS" class="menu-item__subtitle"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="menu-item__trailing">
+                            <ui:Label text="›" class="menu-item__arrow"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="item-quit" focusable="true" class="menu-item">
+                        <ui:VisualElement class="menu-item__accent"/>
+                        <ui:VisualElement class="menu-item__body">
+                            <ui:Label text="Exit" class="menu-item__title"/>
+                            <ui:Label text="RETURN TO DESKTOP" class="menu-item__subtitle"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="menu-item__trailing">
+                            <ui:Label text="›" class="menu-item__arrow"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="statistics-overlay" picking-mode="Position" class="options-overlay" style="display: none;">
+            <ui:VisualElement name="statistics-panel" class="options-panel">
+                <ui:VisualElement class="options-panel__corner options-panel__corner--tl"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--tr"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--bl"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--br"/>
+
+                <ui:VisualElement class="options-panel__header">
+                    <ui:VisualElement class="options-panel__heading">
+                        <ui:Label text="PILOT RECORD" class="options-panel__tag"/>
+                        <ui:Label text="Statistics" class="options-panel__title"/>
+                    </ui:VisualElement>
+                    <ui:Button name="statistics-close" text="✕" class="options-panel__close"/>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="options-panel__divider"/>
+
+                <ui:VisualElement class="options-panel__body">
+                    <ui:VisualElement class="options-section">
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Enemies killed" class="options-binding__label"/>
+                            <ui:Label name="stats-enemies-killed" text="0" class="options-row__value"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Total distance" class="options-binding__label"/>
+                            <ui:Label name="stats-distance" text="0 m" class="options-row__value"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Max level reached" class="options-binding__label"/>
+                            <ui:Label name="stats-max-level" text="1" class="options-row__value"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="options-panel__footer">
+                    <ui:Button name="statistics-back" text="Back" class="options-btn options-btn--primary"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="options-overlay" picking-mode="Position" class="options-overlay" style="display: none;">
+            <ui:VisualElement name="options-panel" class="options-panel">
+                <ui:VisualElement class="options-panel__corner options-panel__corner--tl"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--tr"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--bl"/>
+                <ui:VisualElement class="options-panel__corner options-panel__corner--br"/>
+
+                <ui:VisualElement class="options-panel__header">
+                    <ui:VisualElement class="options-panel__heading">
+                        <ui:Label text="SETTINGS" class="options-panel__tag"/>
+                        <ui:Label text="Options" class="options-panel__title"/>
+                    </ui:VisualElement>
+                    <ui:Button name="options-close" text="✕" class="options-panel__close"/>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="options-panel__divider"/>
+
+                <ui:VisualElement class="options-tabs">
+                    <ui:Button name="tab-audio" text="Audio" class="options-tab is-active"/>
+                    <ui:Button name="tab-video" text="Video" class="options-tab"/>
+                    <ui:Button name="tab-controls" text="Controls" class="options-tab"/>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="options-panel__body">
+                    <ui:VisualElement name="panel-audio" class="options-section">
+                        <ui:VisualElement class="options-row options-row--slider">
+                            <ui:VisualElement class="options-row__head">
+                                <ui:Label text="Music" class="options-row__label"/>
+                                <ui:Label name="music-value" text="70" class="options-row__value"/>
+                            </ui:VisualElement>
+                            <ui:Slider name="music-slider" low-value="0" high-value="100" value="70" class="options-slider"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-row options-row--slider">
+                            <ui:VisualElement class="options-row__head">
+                                <ui:Label text="Effects (SFX)" class="options-row__label"/>
+                                <ui:Label name="sfx-value" text="85" class="options-row__value"/>
+                            </ui:VisualElement>
+                            <ui:Slider name="sfx-slider" low-value="0" high-value="100" value="85" class="options-slider"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="panel-video" class="options-section" style="display: none;">
+                        <ui:VisualElement class="options-row">
+                            <ui:Label text="Fullscreen" class="options-row__label"/>
+                            <ui:Button name="fullscreen-toggle" text="" class="pill-switch">
+                                <ui:VisualElement pickable="false" class="pill-switch__thumb"/>
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-row">
+                            <ui:Label text="Resolution" class="options-row__label"/>
+                            <ui:DropdownField name="resolution-dropdown" class="options-dropdown"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="panel-controls" class="options-section" style="display: none;">
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Aim" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="Mouse" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Roll" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="Q" class="key"/>
+                                <ui:Label text="·" class="options-binding__sep"/>
+                                <ui:Label text="E" class="key"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Fire" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="LMB" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Special" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="RMB" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Boost" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="Shift" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Reload" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="R" class="key"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Spin" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="Space" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="options-binding">
+                            <ui:Label text="Menu" class="options-binding__label"/>
+                            <ui:VisualElement class="options-binding__keys">
+                                <ui:Label text="Esc" class="key key--wide"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="options-panel__footer">
+                    <ui:Button name="options-cancel" text="Cancel" class="options-btn options-btn--ghost"/>
+                    <ui:Button name="options-save" text="Save changes" class="options-btn options-btn--primary"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

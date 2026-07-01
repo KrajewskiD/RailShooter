@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f73d29b971f4197b83d096341b816f, type: 3}
+  m_Name: Giant
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelSpawnData
+  description: 
+  prefabPool:
+  - prefab: {fileID: 8885569454958117511, guid: 4bb8e682473b64381a6f95e8186a3890, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: ac436ee46af1d42078b95d96f493193c, type: 2}
+  - prefab: {fileID: 8885569454958117511, guid: 4bb8e682473b64381a6f95e8186a3890, type: 3}
+    scale: {x: 1, y: 1, z: 1}
+    settings: {fileID: 11400000, guid: e0477759777724d179ee562ee98a3759, type: 2}
+  countPerSegment: 1
+  conditionType: 5
+  condition:
+    rid: 5829447997820764255
+  placementType: 6
+  placement:
+    rid: 5829447979102634103
+  containerName: Giants
+  references:
+    version: 2
+    RefIds:
+    - rid: 5829447979102634103
+      type: {class: ClusterPlacement, ns: , asm: Assembly-CSharp}
+      data:
+        scatterFactor: 0.3
+    - rid: 5829447997820764255
+      type: {class: ProgressiveChanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        baseChance: 0.05
+        increasePerSegment: 0.01
+        startAtSegment: 10
