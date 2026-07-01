@@ -2,8 +2,6 @@
 
 **Spline-based 3D rail shooter** z nieskończonym proceduralnym terenem, progresją roguelike i niszczalnymi asteroidami voxelowymi.
 
-Pilotuj myśliwiec wzdłuż automatycznie generowanej trasy, omijaj przeszkody, eliminuj wrogów, zbieraj orb'y i rozwijaj statek w trakcie jednego przebiegu — zanim rosnąca prędkość Cię dogoni.
-
 ---
 
 ## Spis treści
@@ -232,27 +230,3 @@ ProjectSettings/
 1. Sklonuj repozytorium i otwórz folder projektu w Unity Hub.
 2. Poczekaj na import assetów (pierwsze otwarcie po sklonowaniu może potrwać — folder `Library/` nie jest w repo).
 3. Otwórz scenę `Assets/Scenes/MainMenu.unity` i naciśnij **Play**.
-
-### Czyszczenie cache
-
-```bash
-./cleanup_unity.sh
-```
-
-Usuwa `Library/`, `Temp/`, `Logs/`, `UserSettings/` oraz wygenerowane pliki `.csproj` / `.slnx` — przydatne przy problemach z importem lub przed archiwizacją.
-
----
-
-## Narzędzia deweloperskie
-
-| Plik | Opis |
-|------|------|
-| `tools/build_terrain_chapter.py` | Generator rozdziału dokumentacji (Word) o implementacji proceduralnego terenu — wizualizacje szumu, diagramy architektury, listingi kodu |
-| `NoisePreviewScene` | Podgląd warstw `NoiseProvider` w edytorze |
-| `TerrainPerformance` | Benchmark `TerrainPerformanceController` — porównanie wariantów szumu i generacji chunków |
-
----
-
-## Licencja
-
-Projekt edukacyjny / prototypowy. Szczegóły licencji — do uzupełnienia przez autora.
